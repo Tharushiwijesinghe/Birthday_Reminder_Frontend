@@ -1,0 +1,72 @@
+.home-container {
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.overlay {
+  color: white;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem; /* controls spacing between children */
+}
+
+.app-name {
+  display: flex;
+  align-items: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.logo-img {
+  width: 500px;
+  height: 110px;
+  margin-right: 10px;
+}
+
+.tagline {
+  font-size: 1.3rem;
+  font-style: italic;
+  color: black;
+  font-weight: bold;
+  margin-bottom: 0.5rem; /* reduced space */
+  animation: fadeSlideUp 1.5s ease-in-out forwards;
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem; /* small spacing below tagline */
+}
+
+.home-button {
+  background-color: #053b56;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.home-button:hover {
+  background-color: #13668f;
+}
+
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
