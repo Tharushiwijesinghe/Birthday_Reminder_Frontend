@@ -24,6 +24,7 @@ const Login = () => {
     }
   };
 
+
   return (
     <div className="login-container">
       <form className="login-form" onSubmit={handleSubmit}>
@@ -44,7 +45,8 @@ const Login = () => {
           onChange={handleChange}
           required
         />
-        <button type="submit">Login</button>
+        {/* <button type="submit">Login</button> */}
+        <Link to="/dashboard" className="login-button">Login</Link>
         {message && <p className="message">{message}</p>}
         <p>Don't have an account? <Link to="/register">Register</Link></p>
       </form>
