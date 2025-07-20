@@ -7,7 +7,7 @@ import '../CSS/Dashboard.css';
 
 const Dashboard = () => {
 
-  const [username, setUsername] = useState('Tharushi');
+  const [username, setUsername] = useState(' ');
   const [birthdaysFromDB, setBirthdaysFromDB] = useState([]); // for filtering/searching
   const [upcomingBirthdays, setUpcomingBirthdays] = useState([]); // for upcoming section
   const navigate = useNavigate();
@@ -21,6 +21,14 @@ const Dashboard = () => {
   // };
 
   useEffect(() => {
+
+    // Get username from localStorage
+    // This assumes you have stored the username during registration or login
+    // const storedName = localStorage.getItem('username');
+    // if (storedName) {
+    //   setUsername(storedName);
+    // }
+
     const fetchBirthdays = async () => {
       try {
         const res = await axios.get('http://localhost:5000/api/birthdays');

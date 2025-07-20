@@ -44,9 +44,21 @@ const AllBirthdays = () => {
     try {
       await axios.put(`http://localhost:5000/api/birthdays/${id}`, editForm);
       await fetchBirthdays();
+      console.log("Saving...", editForm);
       setEditId(null);
     } catch (error) {
       console.error('Error updating birthday:', error);
+    }
+  };
+
+  const handleDeleteClick = async (id) => {
+    if (window.confirm('Are you sure you want to delete this birthday?')) {
+      try {
+        await axios.delete(`http://localhost:5000/api/birthdays/${id}`);
+        await fetchBirthdays();
+      } catch (error) {
+        console.error('Error deleting birthday:', error);
+      }
     }
   };
 
@@ -61,7 +73,6 @@ const AllBirthdays = () => {
   return (
     <div className="all-birthdays-container">
       <h2>All Birthdays</h2>
-
       {/* Search and Filter */}
       <div className="search-filter">
         <label>
@@ -92,14 +103,14 @@ const AllBirthdays = () => {
 
       {/* Table */}
       <div className="birthday-table-container">
-              <aside className="sidebar">
-        <h2>🎂 BirthdayPal</h2>
-        <ul>
-          <li><Link to="/dashboard">📊 Dashboard</Link></li>
-          <li><Link to="/add-birthday">➕ Add Birthday</Link></li>
-          <li><Link to="/all-birthdays">📋 All Birthdays</Link></li>
-        </ul>
-      </aside>
+        <aside className="sidebar">
+          <h2>🎂 BirthdayPal</h2>
+          <ul>
+            <li><Link to="/dashboard">📊 Dashboard</Link></li>
+            <li><Link to="/add-birthday">➕ Add Birthday</Link></li>
+            <li><Link to="/all-birthdays">📋 All Birthdays</Link></li>
+          </ul>
+        </aside>
       <table className="birthday-table">
         <thead>
           <tr>
@@ -112,23 +123,51 @@ const AllBirthdays = () => {
         <tbody>
           {filteredBirthdays.length > 0 ? (
             filteredBirthdays.map((b) => (
-              <tr key={b.id}>
-                <td>{b.name}</td>
-                <td>
-                  📅{' '}
-                  {new Date(b.dateOfBirth).toLocaleDateString(undefined, {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                  })}
-                </td>
-                <td>{calculateAge(b.dateOfBirth)} yrs</td>
-                <td>
-                  <button className="edit-btn">✏️</button>
-                  <button className="delete-btn">🗑️</button>
-                </td>
-              </tr>
-            ))
+        <tr key={b._id}>
+          {editId === b._id ? (
+            <>
+              <td>
+                <input
+                  type="text"
+                  name="name"
+                  value={editForm.name}
+                  onChange={handleEditChange}
+                />
+              </td>
+              <td>
+                <input
+                  type="date"
+                  name="dateOfBirth"
+                  value={editForm.dateOfBirth}
+                  onChange={handleEditChange}
+                />
+              </td>
+              <td>{calculateAge(editForm.dateOfBirth)} yrs</td>
+              <td>
+                <button className="save-btn" onClick={() => handleEditSave(b._id)}>save</button>
+                <button className="cancel-btn" onClick={() => setEditId(null)}>close</button>
+              </td>
+            </>
+          ) : (
+            <>
+              <td>{b.name}</td>
+              <td>
+                📅{' '}
+                {new Date(b.dateOfBirth).toLocaleDateString(undefined, {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric',
+                })}
+              </td>
+              <td>{calculateAge(b.dateOfBirth)} yrs</td>
+              <td>
+                <button className="edit-btn" onClick={() => handleEditClick(b)}>Edit</button>
+                <button className="delete-btn" onClick={() => handleDeleteClick(b._id)}>Delete</button>
+              </td>
+            </>
+          )}
+        </tr>
+      ))
           ) : (
             <tr>
               <td colSpan="4">No birthdays found for this month.</td>

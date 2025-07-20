@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../CSS/Home.css';
-import bgImage from '../assets/10.jpg'; // adjust path if needed
+import bgImage from '../assets/17.png'; // adjust path if needed
 import logo from '../assets/logo1.png'; // adjust path if needed
 
 const Home = () => {

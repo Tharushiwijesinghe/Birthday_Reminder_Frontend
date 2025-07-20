@@ -6,7 +6,7 @@
 }
 
 .overlay {
-  color: white;
+  color: rgb(12, 11, 11);
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -46,7 +46,7 @@
 }
 
 .home-button {
-  background-color: #053b56;
+  background-color: #41182c;
   color: white;
   padding: 0.75rem 1.5rem;
   text-decoration: none;
@@ -56,7 +56,7 @@
 }
 
 .home-button:hover {
-  background-color: #13668f;
+  background-color: #41182c;
 }
 
 @keyframes fadeSlideUp {

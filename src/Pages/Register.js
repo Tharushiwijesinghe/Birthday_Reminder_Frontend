@@ -10,11 +10,31 @@ const Register = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    console.log('Registering user:', form);
-    setMessage('✅ Registered successfully (demo mode)');
-    // You can connect to backend API here
+    if (!form.username || !form.email || !form.password) {
+      setMessage('Please fill all fields');
+      return;
+    }
+    try {
+      const res = await fetch('http://localhost:5000/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+    });
+
+    const data = await res.json();
+
+    if (res.ok) {
+      setMessage('✅ Registered successfully! You can now log in.');
+      setForm({ username: '', email: '', password: '' });
+    } else {
+      setMessage(`❌ ${data.message}`);
+    }
+  } catch (err) {
+      console.error('Registration error:', err);
+    setMessage('Registration failed');
+  }
   };
 
   return (

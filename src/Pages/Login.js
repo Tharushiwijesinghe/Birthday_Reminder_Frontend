@@ -11,17 +11,32 @@ const Login = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
 
-    // Demo login logic
-    if (form.email === 'demo@example.com' && form.password === 'password') {
-      setMessage('✅ Login successful!');
-      // Simulate redirect
-      setTimeout(() => navigate('/dashboard'), 1500);
-    } else {
-      setMessage('❌ Invalid email or password');
+    if (!form.email || !form.password) {
+      setMessage('Please fill all fields');
+      return;
     }
+ try {
+    const res = await fetch('http://localhost:5000/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(form),
+    });
+
+    const data = await res.json();
+    if (res.ok) {
+      localStorage.setItem('token', data.token);
+      setMessage('✅Login successful!');
+      setForm({ email: '', password: '' });
+      window.location.href = '/dashboard'; // Redirect to dashboard after login
+    } else {
+      setMessage(`❌ ${data.message}`);
+    }
+  } catch (err) {
+    setMessage('Login failed');
+  }
   };
 
 
@@ -46,7 +61,7 @@ const Login = () => {
           required
         />
         {/* <button type="submit">Login</button> */}
-        <Link to="/dashboard" className="login-button">Login</Link>
+        <button className="login-button">Login</button>
         {message && <p className="message">{message}</p>}
         <p>Don't have an account? <Link to="/register">Register</Link></p>
       </form>
