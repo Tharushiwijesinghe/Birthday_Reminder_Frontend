@@ -1,75 +1,28 @@
-.dashboard-container {
-  display: flex;
-  min-height: 100vh;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(to right, #ffb6c1,#ffa07a );
-  z-index: -1;
-}
-
-/* .main-content {
-  flex: 1;
-  padding: 2rem;
-} */
-
-.dashboard-title {
-  font-size: 24px;
-  font-weight: bold;
-  margin: 20px 0;
-}
-
-.upcoming-birthdays-container {
-  flex: 1;
-  padding: 20px;
-  background-repeat: no-repeat;
+/* Override margins/paddings Bootstrap sets on ul/li in your birthday lists */
+.upcoming-birthdays-container{
   margin-left: 300px;
 }
-.top-bar {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 1rem;
-}
 
-
-.footer {
-  margin-top: 2rem;
-  text-align: center;
-  font-size: 0.9rem;
-  color: #888;
-}
-.upcoming-birthdays-container h3{
-  font-size: 1.5rem;
-  margin-left: 100px;
-  color: #41182c;
-  font-weight: 900;
-}
-.upcoming-birthdays-container ul {
+.upcoming-birthdays-container ul,
+.todays-birthday-banner ul {
+  padding-left: 0;
+  margin-left: 1rem; /* keep your custom indentation */
   list-style: none;
-  padding: 0;
-  margin: 0;
-  margin-left: 120px;
 }
 
 .upcoming-birthdays-container li {
   font-size: 1.1rem;
-  margin: 10px 0;
+  margin: 15px 10px;
   font-weight: 700;
 }
 
-
-
-.todays-birthday-banner {
-  color: #000000;
-  padding: 15px;
-  margin: 100px 0 20px 200px; /* Combined top and left margin */
+.todays-birthday-banner li {
   font-size: 1.2rem;
-  font-weight: bold;
-  width: 900px;
-  height: 100px; 
-  border-radius: 100px; 
+  margin: 20px 0;
+  font-weight: 700;
+  display: flex;
+  border-radius: 50px;
   background: linear-gradient(to right, #69a9d3, #5faf9e, #ffa07a, #b84e9e, #a04b74);
-  display: flex; /* ADDED */
-  align-items: center; /* Center vertically */
-  justify-content: center; /* Center horizontally */
-  text-align: center;
 }
+
 

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import '../CSS/AddBirthday.css'; // Optional: create this CSS file for styling
+import '../CSS/AddBirthday.css'; 
+import '../CSS/Styles.css';
 
 const AddBirthday = () => {
   const [name, setName] = useState('');
@@ -55,30 +56,33 @@ const AddBirthday = () => {
 
   return (
     
-    <div className="add-birthday-page">
-      <div className="title">Add Birthday</div>
-      <div className="image-section"></div>
-      <div className='form-section'>
-      
-      <form onSubmit={handleSubmit} className="birthday-form">
-        <input
-          type="text"
-          placeholder="Enter Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <input
-          type="date"
-          placeholder="Enter Date of Birth"
-          value={dob}
-          onChange={(e) => setDob(e.target.value)}
-        />
-        <button type="submit">Add Birthday</button>
-        {message && <p className="message">{message}</p>}
-      </form>
-    </div>
-     
-    </div>
+ <div className="add-birthday-page">
+  <div className="form-section text-center p-4">
+    <div className="title mb-4">Add Birthday</div>
+    <form onSubmit={handleSubmit} className="birthday-form d-flex flex-column gap-3">
+      <input
+        type="text"
+        placeholder="Enter Name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        className="form-control"
+      />
+      <input
+        type="date"
+        placeholder="Enter Date of Birth"
+        value={dob}
+        onChange={(e) => setDob(e.target.value)}
+        className="form-control"
+      />
+      <button type="submit" className="btn btn-dark">
+        Add Birthday
+      </button>
+      {message && <p className="message mt-2">{message}</p>}
+    </form>
+  </div>
+</div>
+
+
   );
 };
 

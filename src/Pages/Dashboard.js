@@ -68,66 +68,70 @@ const Dashboard = () => {
 
 
   return (
-      <div className="dashboard-container">
-        <main className="main-content">
-          {/* Top Bar */}
-          <header className="top-bar">
-            <h3>Welcome, {username}!</h3>
-          </header>
-          {/* Search and Filter */} 
+  <div className="dashboard-container">
+    <main className="main-content container py-4">
+      {/* Top Bar */}
+      <header className="top-bar d-flex justify-content-end mb-3">
+        <h3>Welcome, {username}!</h3>
+      </header>
 
-        <div className="upcoming-birthdays-container" style={{ backgroundImage: `url(${confettiBg})` }}>
-          {/* Animated Title */}
-          <motion.h3
-            initial={{ x: -100, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.6 }}
-          >
-            Upcoming Birthdays 🎉
-          </motion.h3>
+      {/* Upcoming Birthdays Section */}
+      <div
+        className="upcoming-birthdays-container p-4 rounded"
+        style={{ backgroundImage: `url(${confettiBg})`, backgroundRepeat: 'no-repeat' }}
+      >
+        <motion.h3
+          className="mb-3"
+          initial={{ x: -100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.6 }}
+        >
+          Upcoming Birthdays 🎉
+        </motion.h3>
 
-          {/* Animated List */}
+        <ul>
+          {upcomingBirthdays.map((b, i) => (
+            <motion.li
+              key={i}
+              initial={{ x: -50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{
+                duration: 0.5,
+                delay: 0.3 + i * 0.3,
+              }}
+            >
+              {b.name} –{' '}
+              {new Date(b.dateOfBirth).toLocaleDateString(undefined, {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })}
+            </motion.li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Today's Birthdays Section */}
+      {todaybirthdays.length > 0 && (
+        <div className="todays-birthday-banner mt-5">
+          🎉 <strong>Today’s Birthdays!</strong> 🎉
           <ul>
-            {upcomingBirthdays.map((b, i) => (
-              <motion.li
-                key={i}
-                initial={{ x: -50, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{
-                  duration: 0.5,
-                  delay: 0.3 + i * 0.3, // delays each item
-                }}
-              >
-                {b.name} – {new Date(b.dateOfBirth).toLocaleDateString(undefined, {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
-                })}
-              </motion.li>
+            {todaybirthdays.map((b, i) => (
+              <li key={i}>
+                <strong>{b.name}</strong> – Happy Birthday! 🥳
+              </li>
             ))}
           </ul>
         </div>
-          {/* Today's Birthdays Section */}
-          <div className="todays-birthdays">
-          {todaybirthdays.length > 0 && (
-            <div className="todays-birthday-banner">
-              🎉 <strong>Today’s Birthdays!</strong> 🎉
-              <ul>
-                {todaybirthdays.map((b, i) => (
-                  <li key={i}>
-                    <strong>{b.name}</strong> – Happy Birthday! 🥳
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-          </div>
-          {/* Footer */}
-          <footer className="footer">
-            © 2025 BirthdayPal — Built with ❤️
-          </footer>
-        </main>
-      </div>
+      )}
+
+      {/* Footer */}
+      <footer className="footer mt-4 text-center">
+        © 2025 BirthdayPal — Built with ❤️
+      </footer>
+    </main>
+  </div>
+
   );
 };
 

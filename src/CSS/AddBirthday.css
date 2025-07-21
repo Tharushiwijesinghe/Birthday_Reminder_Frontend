@@ -1,16 +1,9 @@
-/* AddBirthday.css */
-
-body, html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  font-family: 'Segoe UI', sans-serif;
-}
-
 .add-birthday-page {
   height: 100vh;
   width: 100%;
-  background-image: url('../assets/4.avif'); /* Replace with your image path */
+  margin : 0;
+  padding: 0;
+  background-image: url('../assets/4.avif');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -27,8 +20,8 @@ body, html {
   left: 0;
   height: 100%;
   width: 100%;
-  backdrop-filter: blur(6px); /* Subtle blur */
-  background-color: rgba(0, 0, 0, 0.4); /* Optional overlay */
+  backdrop-filter: blur(6px);
+  background-color: rgba(0, 0, 0, 0.4);
   z-index: 0;
 }
 
@@ -39,46 +32,4 @@ body, html {
   text-align: center;
   max-width: 400px;
   width: 90%;
-}
-
-/* Title */
-.title {
-  font-size: 32px;
-  font-weight: bold;
-  margin-bottom: 30px;
-  color: #333;
-}
-
-/* Form styling */
-.birthday-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.birthday-form input {
-  padding: 12px 15px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 16px;
-}
-
-.birthday-form button {
-  padding: 12px 15px;
-  border: none;
-  border-radius: 8px;
-  background-color: #007bff;
-  color: #fff;
-  font-size: 16px;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-
-.birthday-form button:hover {
-  background-color: #0056b3;
-}
-
-.message {
-  margin-top: 10px;
-  color: green;
 }

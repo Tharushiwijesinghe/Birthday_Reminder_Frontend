@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../CSS/Register.css'; // Create this file for styling
+import '../CSS/Register.css'; 
+import '../CSS/Styles.css';// Keep your custom styles if needed
 
 const Register = () => {
   const [form, setForm] = useState({ username: '', email: '', password: '' });
@@ -16,37 +17,57 @@ const Register = () => {
       setMessage('Please fill all fields');
       return;
     }
+
     try {
       const res = await fetch('http://localhost:5000/api/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
-    });
+      });
 
-    const data = await res.json();
+      const data = await res.json();
 
-    if (res.ok) {
-      setMessage('✅ Registered successfully! You can now log in.');
-      setForm({ username: '', email: '', password: '' });
-    } else {
-      setMessage(`❌ ${data.message}`);
-    }
-  } catch (err) {
+      if (res.ok) {
+        setMessage('✅ Registered successfully! You can now log in.');
+        setForm({ username: '', email: '', password: '' });
+      } else {
+        setMessage(`❌ ${data.message}`);
+      }
+    } catch (err) {
       console.error('Registration error:', err);
-    setMessage('Registration failed');
-  }
+      setMessage('Registration failed');
+    }
   };
 
   return (
-    <div className="register-container">
-      <form className="register-form" onSubmit={handleSubmit}>
-        <h2>Register</h2>
-        <input name="username" placeholder="Username" value={form.username} onChange={handleChange}/>
-        <input name="email" placeholder="Email" value={form.email} onChange={handleChange}/>
-        <input type="password" name="password" placeholder="Password" value={form.password} onChange={handleChange}/>
-        <button type="submit">Sign Up</button>
-          {message && <p className="message">{message}</p>}
-          <p>Already have an account? <Link to="/login">Login here</Link></p>
+    <div className="register-container d-flex justify-content-center align-items-center vh-100 bg-light">
+      <form className="bg-white p-5 rounded shadow w-100" style={{ maxWidth: '400px' }} onSubmit={handleSubmit}>
+        <h2 className="mb-4 text-center">Register</h2>
+        <input
+          className="form-control mb-3"
+          name="username"
+          placeholder="Username"
+          value={form.username}
+          onChange={handleChange}
+        />
+        <input
+          className="form-control mb-3"
+          name="email"
+          placeholder="Email"
+          value={form.email}
+          onChange={handleChange}
+        />
+        <input
+          className="form-control mb-3"
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={form.password}
+          onChange={handleChange}
+        />
+        <button className="btn btn-dark w-100" type="submit">Sign Up</button>
+        {message && <p className="text-danger mt-3">{message}</p>}
+        <p className="mt-3">Already have an account? <Link to="/login">Login here</Link></p>
       </form>
     </div>
   );

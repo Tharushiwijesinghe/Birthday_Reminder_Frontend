@@ -5,7 +5,7 @@
 
 .main-content {
   flex-grow: 1;
-  padding: 20px;
+  padding: 0px;
   background-color: #f9f9f9; /* or whatever suits your theme */
   min-height: 100vh;
 }

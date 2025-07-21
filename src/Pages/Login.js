@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import '../CSS/Login.css'; // Create or adjust path if needed
+import '../CSS/Login.css'; 
+import '../CSS/Styles.css'; 
 
 const Login = () => {
   const [form, setForm] = useState({ email: '', password: '' });
@@ -18,35 +19,37 @@ const Login = () => {
       setMessage('Please fill all fields');
       return;
     }
- try {
-    const res = await fetch('http://localhost:5000/api/auth/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(form),
-    });
 
-    const data = await res.json();
-    if (res.ok) {
-      localStorage.setItem('token', data.token);
-      setMessage('✅Login successful!');
-      setForm({ email: '', password: '' });
-      window.location.href = '/dashboard'; // Redirect to dashboard after login
-    } else {
-      setMessage(`❌ ${data.message}`);
+    try {
+      const res = await fetch('http://localhost:5000/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+
+      const data = await res.json();
+      if (res.ok) {
+        localStorage.setItem('token', data.token);
+        setMessage('✅ Login successful!');
+        setForm({ email: '', password: '' });
+        window.location.href = '/dashboard';
+      } else {
+        setMessage(`❌ ${data.message}`);
+      }
+    } catch (err) {
+      setMessage('Login failed');
     }
-  } catch (err) {
-    setMessage('Login failed');
-  }
   };
 
-
   return (
-    <div className="login-container">
-      <form className="login-form" onSubmit={handleSubmit}>
-        <h2>Login</h2>
+    <div className="d-flex justify-content-center align-items-center vh-100" style={{ backgroundColor: '#41182c' }}>
+      <form className="bg-white p-4 shadow rounded" style={{ width: '100%', maxWidth: '400px' }} onSubmit={handleSubmit}>
+        <h2 className="mb-4 text-center">Login</h2>
+
         <input
           type="email"
           name="email"
+          className="form-control mb-3"
           placeholder="Email"
           value={form.email}
           onChange={handleChange}
@@ -55,15 +58,22 @@ const Login = () => {
         <input
           type="password"
           name="password"
+          className="form-control mb-3"
           placeholder="Password"
           value={form.password}
           onChange={handleChange}
           required
         />
-        {/* <button type="submit">Login</button> */}
-        <button className="login-button">Login</button>
-        {message && <p className="message">{message}</p>}
-        <p>Don't have an account? <Link to="/register">Register</Link></p>
+
+        <button type="submit" className="btn btn-dark w-100 fw-bold">
+          Login
+        </button>
+
+        {message && <p className="mt-3 text-center fw-semibold text-success">{message}</p>}
+
+        <p className="mt-3 text-center">
+          Don't have an account? <Link to="/register">Register</Link>
+        </p>
       </form>
     </div>
   );

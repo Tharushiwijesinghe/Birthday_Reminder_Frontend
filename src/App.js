@@ -9,6 +9,7 @@ import Dashboard from './Pages/Dashboard'; // Assuming you have a Dashboard comp
 import AddBirthday from './Pages/AddBirthday'; // Assuming you have an AddBirthday component
 import AllBirthdays from './Pages/AllBirthdays'; // Assuming you have an AllBirthdays component
 import Layout from './Components/Layout'; // Assuming you have a Sidebar component
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 function App() {
