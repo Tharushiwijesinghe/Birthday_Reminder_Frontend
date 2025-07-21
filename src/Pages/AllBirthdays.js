@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import '../CSS/AllBirthdays.css'; 
 
 const AllBirthdays = () => {
+  const API_BASE = process.env.REACT_APP_API_BASE;
   const [birthdaysFromDB, setBirthdaysFromDB] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedMonth, setSelectedMonth] = useState("all");
@@ -14,7 +15,7 @@ const AllBirthdays = () => {
   
     const fetchBirthdays = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/birthdays');
+        const res = await axios.get(`${API_BASE}/api/birthdays`);
         setBirthdaysFromDB(res.data);
       } catch (error) {
         console.error('Error fetching birthdays:', error);
@@ -42,7 +43,7 @@ const AllBirthdays = () => {
 
   const handleEditSave = async (id) => {
     try {
-      await axios.put(`http://localhost:5000/api/birthdays/${id}`, editForm);
+      await axios.put(`${API_BASE}/api/birthdays/${id}`, editForm);
       await fetchBirthdays();
       console.log("Saving...", editForm);
       setEditId(null);
@@ -54,7 +55,7 @@ const AllBirthdays = () => {
   const handleDeleteClick = async (id) => {
     if (window.confirm('Are you sure you want to delete this birthday?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/birthdays/${id}`);
+        await axios.delete(`${API_BASE}/api/birthdays/${id}`);
         await fetchBirthdays();
       } catch (error) {
         console.error('Error deleting birthday:', error);

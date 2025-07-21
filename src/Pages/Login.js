@@ -4,6 +4,7 @@ import '../CSS/Login.css';
 import '../CSS/Styles.css'; 
 
 const Login = () => {
+const API_BASE = process.env.REACT_APP_API_BASE;
   const [form, setForm] = useState({ email: '', password: '' });
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ const Login = () => {
     }
 
     try {
-      const res = await fetch('http://localhost:5000/api/auth/login', {
+      const res = await fetch(`${API_BASE}/api/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
