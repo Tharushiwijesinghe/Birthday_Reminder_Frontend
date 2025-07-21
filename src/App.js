@@ -8,6 +8,8 @@ import Login from './Pages/Login'; // Assuming you have a Login component
 import Dashboard from './Pages/Dashboard'; // Assuming you have a Dashboard component
 import AddBirthday from './Pages/AddBirthday'; // Assuming you have an AddBirthday component
 import AllBirthdays from './Pages/AllBirthdays'; // Assuming you have an AllBirthdays component
+import Layout from './Components/Layout'; // Assuming you have a Sidebar component
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 function App() {
@@ -17,9 +19,12 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/add-birthday" element={<AddBirthday />} />
-        <Route path="/all-birthdays" element={<AllBirthdays />} />
+      {/* Protected routes with Layout */}
+          <Route element={<Layout />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/add-birthday" element={<AddBirthday />} />
+            <Route path="/all-birthdays" element={<AllBirthdays />} />
+          </Route>
         {/* Add more routes as needed */}
       </Routes>
     </Router>

@@ -1,72 +1,147 @@
+/* Container Layout */
+.all-birthdays-container {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 1rem;
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+}
+
+.all-birthdays-container h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #41182c;
+}
+
+/* Search & Filter Bar */
+.search-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  background: #f9f9f9;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.search-filter label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  color: #444;
+}
+
+.search-filter input,
+.search-filter select {
+  margin-top: 0.25rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
 /* Birthday Table */
-.birthday-table-container{
-display: flex;
-min-height: 100vh;
-font-family: Arial, sans-serif;
+.birthday-table-container {
+  overflow-x: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  padding: 1rem;
 }
 
 .birthday-table {
   width: 100%;
   border-collapse: collapse;
-  background-color: white;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
 }
 
 .birthday-table th,
 .birthday-table td {
-  padding: 0.75rem;
+  padding: 0.75rem 1rem;
   text-align: left;
   border-bottom: 1px solid #eee;
 }
 
 .birthday-table th {
   background-color: #ffe6f0;
+  color: #41182c;
+  font-weight: bold;
 }
 
+.birthday-table tr:hover {
+  background-color: #f9f9f9;
+}
+
+/* Action Buttons */
 .edit-btn,
-.delete-btn {
+.delete-btn,
+.save-btn,
+.cancel-btn {
   background: none;
   border: none;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
   cursor: pointer;
-  font-size: 1.1rem;
-  margin-right: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.edit-btn {
+  color: #0066cc;
+}
+
+.delete-btn {
+  color: #cc0000;
+}
+
+.save-btn {
+  background-color: #28a745;
+  color: white;
+  border: none;
+}
+
+.cancel-btn {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+}
+
+.save-btn:hover {
+  background-color: #218838;
+}
+
+.cancel-btn:hover {
+  background-color: #5a6268;
 }
 
 .edit-btn:hover {
-  color: blue;
+  color: #004080;
 }
 
 .delete-btn:hover {
-  color: red;
+  color: #990000;
 }
 
-/* Footer */
-.footer {
-  margin-top: 2rem;
+/* Responsive Input Fields in Table */
+.birthday-table input[type="text"],
+.birthday-table input[type="date"] {
+  width: 100%;
+  padding: 6px 10px;
+  font-size: 0.95rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+/* Empty Row Message */
+.birthday-table td[colspan="4"] {
   text-align: center;
-  font-size: 0.9rem;
-  color: #888;
-}
-/* Sidebar */
-.sidebar {
-  width: 220px;
-  background-color: #41182c;
-  color: white;
-  padding: 2rem 1rem;
-}
-
-.sidebar h2 {
-  font-size: 1.5rem;
-  margin-bottom: 2rem;
-}
-
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-}
-
-.sidebar li {
-  margin: 1rem 0;
-  cursor: pointer;
+  padding: 2rem;
+  color: #999;
+  font-style: italic;
 }

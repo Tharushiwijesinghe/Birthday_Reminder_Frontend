@@ -1,64 +1,35 @@
-.add-birthday-container {
-  max-width: 500px;
-  margin: auto;
-  padding: 20px;
-  background-color: #f2f4f7;
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  display: flex;
-  min-height: 100vh;
-  font-family: Arial, sans-serif;
-}
-
-.birthday-form {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-bottom: 20px;
-}
-
-.birthday-form input,
-.birthday-form button {
-  padding: 10px;
-  font-size: 16px;
-}
-
-.birthday-form button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.birthday-form button:hover {
-  background-color: #0056b3;
-}
-
-.message {
-  margin-top: 10px;
-  color: green;
-  font-weight: bold;
-}
-/* Sidebar */
-.sidebar {
-  width: 220px;
-  background-color: #41182c;
-  color: white;
-  padding: 2rem 1rem;
-}
-
-.sidebar h2 {
-  font-size: 1.5rem;
-  margin-bottom: 2rem;
-}
-
-.sidebar ul {
-  list-style: none;
+.add-birthday-page {
+  height: 100vh;
+  width: 100%;
+  margin : 0;
   padding: 0;
+  background-image: url('../assets/4.avif');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
-.sidebar li {
-  margin: 1rem 0;
-  cursor: pointer;
+.add-birthday-page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  backdrop-filter: blur(6px);
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 0;
+}
+
+.form-section {
+  z-index: 1;
+  padding: 40px;
+  border-radius: 16px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
 }

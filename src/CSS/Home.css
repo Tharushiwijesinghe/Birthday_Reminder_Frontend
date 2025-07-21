@@ -6,14 +6,13 @@
 }
 
 .overlay {
-  color: rgb(12, 11, 11);
+  color: #0c0b0b;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  gap: 1.5rem; /* controls spacing between children */
+  gap: 1.5rem;
 }
 
 .app-name {
@@ -21,13 +20,13 @@
   align-items: center;
   font-size: 2.5rem;
   font-weight: bold;
-  margin-bottom: 0.5rem;
 }
 
 .logo-img {
-  width: 500px;
-  height: 110px;
-  margin-right: 10px;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  margin-bottom: 10px;
 }
 
 .tagline {
@@ -35,28 +34,7 @@
   font-style: italic;
   color: black;
   font-weight: bold;
-  margin-bottom: 0.5rem; /* reduced space */
   animation: fadeSlideUp 1.5s ease-in-out forwards;
-}
-
-.button-group {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1rem; /* small spacing below tagline */
-}
-
-.home-button {
-  background-color: #41182c;
-  color: white;
-  padding: 0.75rem 1.5rem;
-  text-decoration: none;
-  border-radius: 25px;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-
-.home-button:hover {
-  background-color: #41182c;
 }
 
 @keyframes fadeSlideUp {
@@ -69,4 +47,3 @@
     transform: translateY(0);
   }
 }
-
