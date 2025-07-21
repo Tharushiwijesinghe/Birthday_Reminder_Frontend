@@ -10,6 +10,7 @@ import { motion } from 'framer-motion';
 
 const Dashboard = () => {
 
+  const API_BASE = process.env.REACT_APP_API_BASE;
   const [username, setUsername] = useState(' ');
   const [birthdaysFromDB, setBirthdaysFromDB] = useState([]); // for filtering/searching
   const [upcomingBirthdays, setUpcomingBirthdays] = useState([]); // for upcoming section
@@ -21,7 +22,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchBirthdays = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/birthdays');
+        const res = await axios.get(`${API_BASE}/api/birthdays`);
         const today = new Date();
 
         const upcoming = res.data

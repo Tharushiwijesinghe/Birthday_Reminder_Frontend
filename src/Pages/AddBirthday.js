@@ -5,6 +5,7 @@ import '../CSS/AddBirthday.css';
 import '../CSS/Styles.css';
 
 const AddBirthday = () => {
+  const API_BASE = process.env.REACT_APP_API_BASE;
   const [name, setName] = useState('');
   const [dob, setDob] = useState('');
   const [birthdays, setBirthdays] = useState([]);
@@ -14,7 +15,7 @@ const AddBirthday = () => {
   // Fetch all birthdays from backend
   const fetchBirthdays = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/birthdays/getAllBirthdays');
+      const res = await axios.get(`${API_BASE}/api/birthdays/getAllBirthdays`);
       console.log('Fetched birthdays:', res.data);
       setBirthdays(res.data);
     } catch (error) {
@@ -32,7 +33,7 @@ const AddBirthday = () => {
   if (!name || !dob) return alert('Please fill out both fields.');
 
   try {
-    const res = await axios.post('http://localhost:5000/api/birthdays', {
+    const res = await axios.post(`${API_BASE}/api/birthdays`, {
       name,
       dateOfBirth: dob,
       // userId: '12345',
