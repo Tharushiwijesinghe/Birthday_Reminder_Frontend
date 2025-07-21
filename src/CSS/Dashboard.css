@@ -16,12 +16,24 @@
   font-weight: 700;
 }
 
+.todays-birthday-banner strong{
+  color: #41182c!important;
+  font-size: 1.5rem!important;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  font-weight: 900;
+}
+
 .todays-birthday-banner li {
   font-size: 1.2rem;
-  margin: 20px 0;
+  margin: 30px 0;
   font-weight: 700;
   display: flex;
   border-radius: 50px;
+  background-size: 100px 100%;
+  align-items: center;
+  justify-content: center;
   background: linear-gradient(to right, #69a9d3, #5faf9e, #ffa07a, #b84e9e, #a04b74);
 }
 

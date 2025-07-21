@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaHome, FaPlus, FaList, FaArrowLeft, FaSignOutAlt } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
+import logo from '../assets/logo1.png'; // Ensure the path to your logo is correct
 import '../CSS/Sidebar.css'; // same styles from Dashboard.css
 
 const Sidebar = () => {
@@ -18,7 +19,7 @@ const Sidebar = () => {
   return (
     <aside className="sidebar">
       <div className="sidebar-top">
-        <img src="/logo.png" alt="BirthdayPal Logo" className="logo" />
+        <img src={logo} alt="BirthdayPal Logo" className="logo" />
         <h2 className="dashboard-title">Dashboard</h2>
       </div>
 
