@@ -103,14 +103,6 @@ const AllBirthdays = () => {
 
       {/* Table */}
       <div className="birthday-table-container">
-        <aside className="sidebar">
-          <h2>🎂 BirthdayPal</h2>
-          <ul>
-            <li><Link to="/dashboard">📊 Dashboard</Link></li>
-            <li><Link to="/add-birthday">➕ Add Birthday</Link></li>
-            <li><Link to="/all-birthdays">📋 All Birthdays</Link></li>
-          </ul>
-        </aside>
       <table className="birthday-table">
         <thead>
           <tr>

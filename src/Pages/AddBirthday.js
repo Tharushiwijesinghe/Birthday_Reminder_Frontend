@@ -55,16 +55,11 @@ const AddBirthday = () => {
 
   return (
     
-    <div className="add-birthday-container">
-      <aside className="sidebar">
-        <h2>🎂 BirthdayPal</h2>
-        <ul>
-          <li><Link to="/dashboard">📊 Dashboard</Link></li>
-          <li><Link to="/add-birthday">➕ Add Birthday</Link></li>
-          <li><Link to="/all-birthdays">📋 All Birthdays</Link></li>
-        </ul>
-      </aside>
-      <h2>Add Birthday</h2>
+    <div className="add-birthday-page">
+      <div className="title">Add Birthday</div>
+      <div className="image-section"></div>
+      <div className='form-section'>
+      
       <form onSubmit={handleSubmit} className="birthday-form">
         <input
           type="text"
@@ -81,7 +76,7 @@ const AddBirthday = () => {
         <button type="submit">Add Birthday</button>
         {message && <p className="message">{message}</p>}
       </form>
-
+    </div>
      
     </div>
   );
