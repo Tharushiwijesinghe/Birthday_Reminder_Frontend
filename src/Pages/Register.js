@@ -40,8 +40,8 @@ const Register = () => {
   };
 
   return (
-    <div className="register-container d-flex justify-content-center align-items-center vh-100 bg-light">
-      <form className="bg-white p-5 rounded shadow w-100" style={{ maxWidth: '400px' }} onSubmit={handleSubmit}>
+    <div className="register-container d-flex justify-content-center align-items-center vh-100 ">
+      <form className=" p-5 rounded shadow w-100 bg-light" style={{ maxWidth: '400px' }} onSubmit={handleSubmit}>
         <h2 className="mb-4 text-center">Register</h2>
         <input
           className="form-control mb-3"
